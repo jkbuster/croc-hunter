@@ -27,15 +27,6 @@ node {
   // set additional git envvars for image tagging
   pipeline.gitEnvVars()
 
-  // used to debug deployment setup
-  env.DEBUG_DEPLOY = false
-
-  // debugging helm deployments
-  if (env.DEBUG_DEPLOY) {
-    println "Runing helm tests"
-    pipeline.helmConfig()
-  }
-
   def acct = pipeline.getContainerRepoAcct(config)
 
   // tag image with version, and branch-commit_id
@@ -67,18 +58,18 @@ node {
     sh "go test -v -race ./..."
 
     // run helm chart linter
-    pipeline.helmLint(chart_dir)
+    // pipeline.helmLint(chart_dir)
 
     // run dry-run helm chart installation
-    pipeline.helmDeploy(
-      dry_run       : true,
-      name          : config.app.name,
-      version_tag   : image_tags_list.get(0),
-      chart_dir     : chart_dir,
-      replicas      : config.app.replicas,
-      cpu           : config.app.cpu,
-      memory        : config.app.memory
-    )
+    //pipeline.helmDeploy(
+    //  dry_run       : true,
+    //  name          : config.app.name,
+    //  version_tag   : image_tags_list.get(0),
+    //  chart_dir     : chart_dir,
+    //  replicas      : config.app.replicas,
+    //  cpu           : config.app.cpu,
+    //  memory        : config.app.memory
+    //)
 
   }
 
@@ -107,15 +98,15 @@ node {
     stage ('deploy') {
 
       // Deploy using Helm chart
-      pipeline.helmDeploy(
-        dry_run       : false,
-        name          : config.app.name,
-        version_tag   : image_tags_list.get(0),
-        chart_dir     : chart_dir,
-        replicas      : config.app.replicas,
-        cpu           : config.app.cpu,
-        memory        : config.app.memory
-      )
+      //pipeline.helmDeploy(
+      //  dry_run       : false,
+      //  name          : config.app.name,
+      //  version_tag   : image_tags_list.get(0),
+      //  chart_dir     : chart_dir,
+      //  replicas      : config.app.replicas,
+      //  cpu           : config.app.cpu,
+      //  memory        : config.app.memory
+      //)
 
     }
   }
