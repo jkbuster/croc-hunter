@@ -1,6 +1,6 @@
 default: docker_build
 
-DOCKER_IMAGE ?= quay.io/lachie83/croc-hunter
+DOCKER_IMAGE ?= quay.io/jkbuster/croc-hunter
 BUILD_NUMBER ?= `git rev-parse --short HEAD`
 VCS_REF ?= `git rev-parse --short HEAD`
 
@@ -33,7 +33,7 @@ all: build
 
 .PHONY: build
 build:
-	GOBIN=$(BINDIR) $(GO) install $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' github.com/lachie83/croc-hunter/...
+	GOBIN=$(BINDIR) $(GO) install $(GOFLAGS) -tags '$(TAGS)' -ldflags '$(LDFLAGS)' github.com/jkbuster/croc-hunter/...
 
 HAS_GLIDE := $(shell command -v glide;)
 HAS_GIT := $(shell command -v git;)

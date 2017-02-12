@@ -6,7 +6,7 @@ def pipeline = new io.estrado.Pipeline()
 
 node {
   def goPath = "/go"
-  def workDir = "${goPath}/src/github.com/lachie83/croc-hunter/"
+  def workDir = "${goPath}/src/github.com/jkbuster/croc-hunter/"
   def pwd = pwd()
   def chart_dir = "${pwd}/charts/croc-hunter"
 

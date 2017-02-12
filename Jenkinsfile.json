@@ -7,8 +7,8 @@
   },
   "container_repo": {
     "host": "quay.io",
-    "master_acct": "lachie83",
-    "alt_acct": "lachie83",
+    "master_acct": "jkbuster",
+    "alt_acct": "jkbuster",
     "jenkins_creds_id": "quay_creds",
     "repo": "croc-hunter",
     "dockeremail": ".",
