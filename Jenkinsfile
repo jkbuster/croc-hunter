@@ -33,7 +33,6 @@ node {
   // debugging helm deployments
   if (env.DEBUG_DEPLOY) {
     println "Runing helm tests"
-    pipeline.kubectlTest()
     pipeline.helmConfig()
   }
 
